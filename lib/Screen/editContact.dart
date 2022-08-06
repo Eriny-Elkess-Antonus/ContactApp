@@ -104,160 +104,164 @@ class _EditContactState extends State<EditContact> {
         body: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              const Text('Choose Image'),
-              const Padding(
-                padding: EdgeInsets.all(20.0),
-                child: PhotoList(),
-              ),
-              TextFormField(
-                initialValue: _initValues['name'],
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                ),
-                validator: (value) {
-                  final trimmed = value?.trim();
-                  if (trimmed == null || trimmed.isEmpty) {
-                    return 'need';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  editContact = ContactInfo(
-                    name: value.toString(),
-                    phone: editContact.phone,
-                    address: editContact.address,
-                    image: editContact.image,
-                    jopTitle: editContact.jopTitle,
-                    note: editContact.name,
-                  );
-                },
-              ),
-              const Text('Enter Contact First and Last Name'),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
-                ),
-                initialValue: _initValues['phone'],
-                validator: (value) {
-                  final trimmed = value?.trim();
-                  if (trimmed == null || trimmed.isEmpty) {
-                    return 'need';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  editContact = ContactInfo(
-                    name: editContact.name,
-                    phone: value.toString(),
-                    address: editContact.address,
-                    image: editContact.image,
-                    jopTitle: editContact.jopTitle,
-                    note: editContact.name,
-                  );
-                },
-              ),
-              const Text('Enter phone number'),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Jop Title',
-                ),
-                initialValue: _initValues['jopTitle'],
-                validator: (value) {
-                  final trimmed = value?.trim();
-                  if (trimmed == null || trimmed.isEmpty) {
-                    return 'need';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  editContact = ContactInfo(
-                    name: editContact.name,
-                    phone: editContact.phone,
-                    address: editContact.address,
-                    image: editContact.image,
-                    jopTitle: value.toString(),
-                    note: editContact.name,
-                  );
-                },
-              ),
-              const Text('Enter Jop Title'),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Addres',
-                ),
-                initialValue: _initValues['address'],
-                validator: (value) {
-                  final trimmed = value?.trim();
-                  if (trimmed == null || trimmed.isEmpty) {
-                    return 'need';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  editContact = ContactInfo(
-                    name: editContact.name,
-                    phone: editContact.phone,
-                    address: value.toString(),
-                    image: editContact.image,
-                    jopTitle: editContact.jopTitle,
-                    note: editContact.name,
-                  );
-                },
-              ),
-              const Text('Enter contact address'),
-              const SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'Notes',
-                ),
-                initialValue: _initValues['note'],
-                validator: (value) {
-                  final trimmed = value?.trim();
-                  if (trimmed == null || trimmed.isEmpty) {
-                    return 'need';
-                  }
-                  return null;
-                },
-                onSaved: (value) {
-                  editContact = ContactInfo(
-                    name: editContact.name,
-                    phone: editContact.phone,
-                    address: editContact.address,
-                    image: editContact.image,
-                    jopTitle: editContact.jopTitle,
-                    note: value.toString(),
-                  );
-                },
-              ),
-              const Text('Enter contact Note'),
-              const SizedBox(
-                height: 15,
-              ),
-              ElevatedButton(
-                child: const Center(
-                  child: Text(
-                    'Save it',
-                    style: TextStyle(fontSize: 30, color: Colors.white),
-                  ),
-                ),
-                onPressed: () {
-                  _saveForm();
-                },
-              ),
-            ]),
+            child: Form(
+              key: _form,
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text('Choose Image'),
+                    const Padding(
+                      padding: EdgeInsets.all(20.0),
+                      child: PhotoList(),
+                    ),
+                    TextFormField(
+                      initialValue: _initValues['name'],
+                      decoration: const InputDecoration(
+                        labelText: 'Name',
+                      ),
+                      validator: (value) {
+                        final trimmed = value?.trim();
+                        if (trimmed == null || trimmed.isEmpty) {
+                          return 'need';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        editContact = ContactInfo(
+                          name: value.toString(),
+                          phone: editContact.phone,
+                          address: editContact.address,
+                          image: editContact.image,
+                          jopTitle: editContact.jopTitle,
+                          note: editContact.name,
+                        );
+                      },
+                    ),
+                    const Text('Enter Contact First and Last Name'),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Phone',
+                      ),
+                      initialValue: _initValues['phone'],
+                      validator: (value) {
+                        final trimmed = value?.trim();
+                        if (trimmed == null || trimmed.isEmpty) {
+                          return 'need';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        editContact = ContactInfo(
+                          name: editContact.name,
+                          phone: value.toString(),
+                          address: editContact.address,
+                          image: editContact.image,
+                          jopTitle: editContact.jopTitle,
+                          note: editContact.name,
+                        );
+                      },
+                    ),
+                    const Text('Enter phone number'),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Jop Title',
+                      ),
+                      initialValue: _initValues['jopTitle'],
+                      validator: (value) {
+                        final trimmed = value?.trim();
+                        if (trimmed == null || trimmed.isEmpty) {
+                          return 'need';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        editContact = ContactInfo(
+                          name: editContact.name,
+                          phone: editContact.phone,
+                          address: editContact.address,
+                          image: editContact.image,
+                          jopTitle: value.toString(),
+                          note: editContact.name,
+                        );
+                      },
+                    ),
+                    const Text('Enter Jop Title'),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Addres',
+                      ),
+                      initialValue: _initValues['address'],
+                      validator: (value) {
+                        final trimmed = value?.trim();
+                        if (trimmed == null || trimmed.isEmpty) {
+                          return 'need';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        editContact = ContactInfo(
+                          name: editContact.name,
+                          phone: editContact.phone,
+                          address: value.toString(),
+                          image: editContact.image,
+                          jopTitle: editContact.jopTitle,
+                          note: editContact.name,
+                        );
+                      },
+                    ),
+                    const Text('Enter contact address'),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Notes',
+                      ),
+                      initialValue: _initValues['note'],
+                      validator: (value) {
+                        final trimmed = value?.trim();
+                        if (trimmed == null || trimmed.isEmpty) {
+                          return 'need';
+                        }
+                        return null;
+                      },
+                      onSaved: (value) {
+                        editContact = ContactInfo(
+                          name: editContact.name,
+                          phone: editContact.phone,
+                          address: editContact.address,
+                          image: editContact.image,
+                          jopTitle: editContact.jopTitle,
+                          note: value.toString(),
+                        );
+                      },
+                    ),
+                    const Text('Enter contact Note'),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ElevatedButton(
+                      child: const Center(
+                        child: Text(
+                          'Save it',
+                          style: TextStyle(fontSize: 30, color: Colors.white),
+                        ),
+                      ),
+                      onPressed: () {
+                        _saveForm();
+                      },
+                    ),
+                  ]),
+            ),
           ),
         ),
       ),

@@ -141,20 +141,18 @@ class _AddcontactState extends State<Addcontact> {
                   ),
                 ),
                 onPressed: () {
-                  setState(() {
-                    final contact = ContactInfo(
-                      name: name,
-                      phone: phone,
-                      address: address,
-                      jopTitle: jobTitle,
-                      note: note,
-                      image: 'assets/person.jpg',
-                    );
-                    Provider.of<ContactData>(context, listen: false)
-                        .addContact(contact);
+                  final contact = ContactInfo(
+                    name: name,
+                    phone: phone,
+                    address: address,
+                    jopTitle: jobTitle,
+                    note: note,
+                    image: 'assets/person.jpg',
+                  );
+                  Provider.of<ContactData>(context, listen: false)
+                      .addContact(contact);
 
-                    Navigator.of(context).pop(false);
-                  });
+                  Navigator.of(context).pop(false);
                 },
               ),
             ]),

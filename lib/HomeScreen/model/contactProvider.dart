@@ -66,5 +66,6 @@ class ContactData extends ChangeNotifier {
 // clear all contacts
   void clear() {
     _contact.clear();
+    notifyListeners();
   }
 }
